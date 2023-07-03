@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        color:crimson;
+        -webkit-text-stroke:1px;
+        -webkit-text-stroke-color:white ;
+        text-align: center;
+        margin-top:13%;
+        font-size: 50px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    body{
+    font-family: sans-serif;
+    background-image: url("resultbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:72vh;
+}
+p{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background:rgba(0,0,0,0.1);
+    border-top-left-radius: 6rem;
+    border-bottom-right-radius: 6rem;
+    color:black;
+    margin-top: 50px;
+}
+
+
+</style>
+<body>
+
+    <img src="bg1.jpg" style="height:120px; margin-left:550px;margin-top:1;color:black%";>
+    <h1>
+         Check Your Quiz Result Below!!!
+    </h1>
+    <center>
+        
+    <button type="button" id="check-answer" onclick="checkResult()">Know Your Result Here!!</button>
+    <p id="result">
+    </p>    
+</center>
+    <script>
+         function checkResult(){
+            var r1score=localStorage.getItem('score1');
+            var r2score=localStorage.getItem('score2');
+            var r3score=localStorage.getItem('score3');
+            r1score=2*parseInt(r1score);
+            r2score=2*parseInt(r2score);
+            r3score=4*parseInt(r3score);
+            sum= parseInt(r1score+r2score+r3score); 
+            avg=sum/3;
+            avg=Math.round(avg * 10)/10;
+        if (avg >= 9.5) {
+            document.getElementById("result").style.border="1px solid white";
+            document.getElementById("result").style.width="800px";
+            document.getElementById("result").style.height="200px";
+            document.getElementById("result").style.fontSize="25px";
+            document.getElementById("result").innerHTML="Round-1 score : "+r1score+ "/20" +"<br>"+" Round-2 score:  " + r2score+"/10"+"<br>"+"Round-3 score:  " + r3score+"/20"+"<br>"+"Cumulative Score is:  " + avg +"<br>"+"CONGRATULATIONS!!!! "+"<br>"+"You got Admission in : ''VIT VELLORE'' "+"<br>";
+        
+        } else if (avg >=7.5) {
+        
+            document.getElementById("result").style.border="1px solid white";
+            document.getElementById("result").style.width="650px";
+            document.getElementById("result").style.height="200px";
+            document.getElementById("result").style.fontSize="25px";
+            document.getElementById("result").innerHTML="Round-1 score : "+r1score+ "/20" +"<br>"+" Round-2 score:  " + r2score+"/10"+"<br>"+"Round-3 score:  " + r3score+"/20"+"<br>"+"Cumulative Score is:  " + avg +"<br>"+"CONGRATULATIONS!!!!"+"You got Admission in : ''VIT CHENNAI'' "+"<br>";
+        
+        } else if(avg>=6.5) {
+            document.getElementById("result").style.border="1px solid white";
+            document.getElementById("result").style.width="800px";
+            document.getElementById("result").style.height="200px";
+            document.getElementById("result").style.fontSize="25px";
+            document.getElementById("result").innerHTML="Round-1 score : "+r1score+ "/20" +"<br>"+" Round-2 score:  " + r2score+"/10"+"<br>"+"Round-3 score:  " + r3score+"/20"+"<br>"+"Cumulative Score is:  " + avg +"<br>"+"CONGRATULATIONS!!!!"+"You got Admission in : ''VIT AMARAVATI'' "+"<br>";
+        }
+        else if(avg<6) {
+            document.getElementById("result").style.border="1px solid white";
+            document.getElementById("result").style.width="800px";
+            document.getElementById("result").style.height="200px";
+            document.getElementById("result").style.fontSize="25px";
+            document.getElementById("result").innerHTML="Round-1 score : "+r1score+ "/20" +"<br>"+" Round-2 score:  " + r2score+"/10"+"<br>"+"Round-3 score:  " + r3score+"/20"+"<br>"+"Cumulative Score is:  " + avg +"<br>"+"Better Luck Next Time"+"NO ADMISSION IS GIVEN "+"<br>";
+        }
+        
+        }
+         </script>
+
+    <p>
+      
+    </p>
+</body>
+</html>

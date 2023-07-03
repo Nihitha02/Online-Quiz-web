@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Quiz</title>
+    <style>
+        *{
+	padding: 0;
+	margin: 0;
+}
+body{
+    background:-webkit-radial-gradient(center,#df6d95,#830336,black);
+	background-size: cover;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	font-family: sans-serif;
+	
+}
+.label{
+	padding: 20px 130px;
+	font-size: 35px;
+	font-weight: bold;
+	color: #130f40;
+}
+.wrapper{
+
+	margin-top: 100px;
+	width: 65%;
+	height:500px;
+    width: 1000px;
+	background: #dedede;
+    background:-webkit-linear-gradient(top,rgb(165, 165, 214),rgb(207, 235, 135));
+    border-top-left-radius: 6rem;
+    border-bottom-right-radius: 6rem;
+}
+.welcome_text{
+	font-family: sans-serif;
+}
+.welcome_text button:hover{
+	background: #151c6a;
+}
+.welcome_text button{
+
+	height: 50px;
+	width: 120px;
+	font-size: 20px;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+	background: crimson;
+	border-radius: 3px;
+	border: 1px solid white;
+	transition: .5s;
+    border-radius: 30px;
+    margin-top: 15px;
+}
+.welcome_text li{
+    color: black;
+    text-align: left;
+    margin-left: 50px;
+    font-size: 22px;
+    line-height: 35px;
+}
+
+.wrapper h2{
+
+font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+margin-top: 30px;
+color:crimson;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <center><h2 class="label">INSTRUCTIONS</h2></center>
+        <div class="welcome_text">
+            
+                <li>The medium of the questions will be only English.</li>
+                <li>You can access the Quiz only once</li>
+                <li>Round-1 consists of 10 General Science questions and the duration will be 15 Minutes.</li>
+                <li>Round-2 consists of 5 General Knowledge questions and the duration will be 15 Minutes.</li>
+                <li>Round-3 consists of 5 Logo Identification questions and the duration will be 8 Minutes.</li>
+                <li>Each question carries one mark. No negative marking.</li>
+                <li>Questions are of Multiple Choice options</li>
+                <li>Click on Start Exam button to start the exam</li>
+ 
+               <center> <a href="Round1.html"><button>Start Quiz</button></a></center>
+            
+        </div>
+    </div>
+ 
+    <!-- site.js -->
+    <script src="dist/js/start.js"></script>
+</body>
+</html>

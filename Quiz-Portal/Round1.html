@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIT Quiz Portal</title>
+    
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+    background:-webkit-radial-gradient(center,#df6d95,#830336,black);
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+img{
+    height: 18%;
+    margin-left: 18%;
+
+}
+.img{
+    position: fixed;
+}
+#title{
+    text-align: center;
+    padding: 30px;
+    font-size: 3rem;
+    color:white;    
+    background:-webkit-radial-gradient(left #9ec5ea,#2a3ba6);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+   
+}
+.questions{
+    margin: 3rem auto;
+    width: 70vw;
+    padding: 2rem;
+    background:-webkit-linear-gradient(top,rgb(165, 165, 214),rgb(207, 235, 135));
+    cursor: default;
+    border-top-left-radius: 6rem;
+    border-bottom-right-radius: 6rem;
+    margin-top:1%;
+    color: darkred;
+}
+#question{
+    margin-bottom: 1rem;
+    font-size:20px;
+}
+.option{
+    margin-bottom: 0.5rem;
+    font-size: 20px;
+
+    width: 220px;
+    height: 30px;
+    background: rgba(85, 155, 179,0.3);
+    border-radius: 30px;
+    margin-left: 70px;
+    text-align: center  ;
+
+}
+.option:hover{
+    color:brown;
+}
+ol{
+    position: relative;
+    padding: 0 1.5rem;
+    color: black;
+    font-weight:400;
+    height: 150px;
+    
+}
+span{
+    display:block ;
+    padding: 0.1rem 0.7rem;
+ 
+}
+#answer{
+    margin-top: 2.5rem;
+}
+#stat{
+    margin-top: 1.5rem;
+    color:darkgreen;
+}
+.buttons{
+    text-align: center;
+
+}
+button{
+    padding: 0.2rem 1.5rem;
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    border-radius: 1.5rem;
+    color: white;
+    background:crimson;
+    font-family:'Times New Roman', Times, serif;
+ 
+}
+
+button:active{
+    background: lavender;
+}
+#scoreboard,#answerBank{
+    width: 14rem;
+    background:-webkit-linear-gradient(rgb(177, 177, 238),rgb(228, 145, 145));
+    padding: 2rem;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 1rem;
+    display: none;
+    height:220px;
+    color:white;
+    border-top-left-radius: 6rem;
+    border-bottom-right-radius: 6rem;
+}
+#scoreboard .img{
+    margin-left: 30px;
+}
+#score-title{
+    margin: 1rem 0;
+}
+#score-btn,#check-answer{
+    margin-top: 1rem;
+}
+#score-btn,#Round2{
+    margin-top: 1rem;
+}
+#score{
+    font-size: 2.5rem;
+}
+#answerBank li{
+    text-align: left;
+    margin-bottom: 0.2rem;
+    font-size: larger;
+}
+#answers{
+    margin-top: 1rem;
+}
+h3{
+    font-size:25px;
+    color: darkred;
+    text-align: center;
+}
+p{
+    font-size: 17px;
+    margin-right: 10px;
+    margin-top:35px;
+    float: right;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+#countdown-box{
+    height: 1px; 
+    margin-left: 90%;
+}
+#countdown  {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    display: inline-block;
+    padding: 3px;
+    width:90px;
+    border-radius:20px;
+    color:darkgreen
+}
+#countdown span {
+    font-weight: bold; 
+    font-size: 30px;
+}
+.round1{
+    font-size: 40px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin:0%;
+    font-weight: 600;
+    color: lightgreen;
+}
+</style>
+</head>
+
+<body>
+    <h1 id="title">Vellore Institute of Technology
+        <br> Quiz Portal
+    </h1>
+<center><div class="round1"> Round-1</div></center>
+    <!-- quiz-container -->
+    <div id="quiz-container">
+        <!-- question container -->
+        <div class="questions">
+            <div id="countdown-box">
+                <h4>Time Left:</h4>
+                <div id="countdown">
+                   <span id="minutes">0m</span><span id="seconds">0s</span> 
+                </div>
+            </div>
+          
+            <h2 id="question"></h2>
+            
+            <ol type="A">
+                <li class="option"><span id="option0" onclick="calcScore(this)"></span></li>
+                <li class="option"><span id="option1" onclick="calcScore(this)"></span></li>
+                <li class="option"><span id="option2" onclick="calcScore(this)"></span></li>
+                <li class="option"><span id="option3" onclick="calcScore(this)"></span></li>
+            </ol>
+            <center><h4 id="stat"></h4></center>
+            <br>
+            <div class="buttons">
+                <button type="button" class="next">Next Question</button>
+            </div>  
+        </div>      
+    </div>
+</center>
+    <div id="scoreboard">
+        <h2 id="score"></h2>
+        <a href="Round2.html"><button type="button" id="Round2" onclick="">Round2</button></a>
+    </div>
+
+    <div id="answerBank">
+        <h2>Answers :</h2>
+        <ol type="1" id="answers">
+
+        </ol>
+        <button type="button" id="score-btn" onclick="backToQuiz()">Back to Quiz</button>
+    </div>
+<script>
+    
+        
+let minutes = 15; 
+let seconds = 0; 
+let totalSeconds = minutes * 60 + seconds;
+let tempSeconds = totalSeconds;
+const convert = (value, inSeconds) => {
+if (value > inSeconds) {
+    let x = value % inSeconds;
+    tempSeconds = x;
+    return (value - x) / inSeconds;
+} else {
+    return 0;
+}
+};
+const setSeconds = (s) => {
+document.querySelector("#seconds").textContent = s + "s";
+};
+const setMinutes = (m) => {
+document.querySelector("#minutes").textContent = m + "m";
+};
+var x = setInterval(() => {
+if (totalSeconds <= 0) {
+    clearInterval(x);
+}
+setMinutes(convert(tempSeconds, 60));
+setSeconds(tempSeconds == 60 ? 59 : tempSeconds);
+totalSeconds--;
+tempSeconds = totalSeconds;
+}, 1000);
+        //Question bank
+        var questionBank= [
+        {
+        question : 'Which among the following element is an essential constituent of acids?',
+        option : [' Nitrogen','Hydrogen','Oxygen',' Helium'],
+        answer : 'Hydrogen'
+        
+    },
+    {
+        question : 'In which organ RBC are selectively destroyed/ recycled by macrophages?',
+        option : ['Spleen','Kidney','Liver','Pancreas'],
+        answer : 'Spleen'
+        
+    },
+    {
+        question : 'How much geographical area of India is forest land?',
+        option : [' 20%','23%','26%','28%'],
+        answer : '20%'
+        
+    },
+    {
+        question : 'Which among the following is not a carnivorous plant?',
+        option : ['Pitcher plant','Venus Fly Trap','waterwheel plant','Marsh Mallow'],
+        answer : 'Marsh Mallow'
+        
+    },
+    {
+        question : 'Which of the following organism grows on Common Bread?',
+        option : [' Bacterium',' Yeast','Mucor',' Virus'],
+        answer : 'Mucor'
+        
+    },
+    {
+        question : 'What is the S.I. unit of absorptive power?',
+        option : ['dioptre','metre','ampere','No unit'],
+        answer : 'No unit'
+        
+    },
+    {
+        question : 'What is the device used to measure the cell potential?',
+        option : ['Ammeter','Voltmeter','Wattmeter','None of the above'],
+        answer : 'Voltmeter'
+        
+    },
+    {
+        question : 'Which vitamin protects us from Pellagra disease?',
+        option : ['Vitamin B5','Vitamin B7',' Vitamin B3','None of the above'],
+        answer : ' Vitamin B3'
+        
+    },
+    {
+        question : 'Which of the following resource is abiotic and renewable?',
+        option : ['Iron Ore','Livestock',' Water',' Forest'],
+        answer : 'Water'
+        
+    },
+    {
+        question : 'Which of the following crops is regarded as a plantation crop?',
+        option : ['Coconut','Cotton','Sugarcane','Rice'],
+        answer : 'Coconut'
+        
+    },
+
+]
+
+var question= document.getElementById('question');
+var quizContainer= document.getElementById('quiz-container');
+var scorecard= document.getElementById('scorecard');
+var option0= document.getElementById('option0');
+var option1= document.getElementById('option1');
+var option2= document.getElementById('option2');
+var option3= document.getElementById('option3');
+var next= document.querySelector('.next');
+var points= document.getElementById('score');
+var span= document.querySelectorAll('span');
+var i=0;
+var score= 0;
+
+//function to display questions
+function displayQuestion(){
+    for(var a=0;a<span.length;a++){
+        span[a].style.background='none';
+    }
+    question.innerHTML= 'Q.'+(i+1)+' '+questionBank[i].question;
+    option0.innerHTML= questionBank[i].option[0];
+    option1.innerHTML= questionBank[i].option[1];
+    option2.innerHTML= questionBank[i].option[2];
+    option3.innerHTML= questionBank[i].option[3];
+    stat.innerHTML= "Question"+' '+(i+1)+' '+'of'+' '+questionBank.length;
+}
+
+//function to calculate scores
+function calcScore(e){
+    if(e.innerHTML===questionBank[i].answer && score<questionBank.length)
+    {
+        score= score+1;
+        document.getElementById(e.id).style.background= 'limegreen';
+    }
+    else{
+        document.getElementById(e.id).style.background= 'tomato';
+    }
+    setTimeout(nextQuestion,700);
+    localStorage.setItem('score1',score);
+}
+//function to display next question
+function nextQuestion(){
+    if(i<questionBank.length-1)
+    {
+        i=i+1;
+        displayQuestion();
+    }
+    else{
+        points.innerHTML= score+ '/'+ questionBank.length;
+        quizContainer.style.display= 'none';
+        scoreboard.style.display= 'block'
+    }
+}
+//click events to next button
+next.addEventListener('click',nextQuestion);
+//Back to Quiz button event
+function backToQuiz(){
+    location.reload();
+}
+//function to check Answers
+function checkAnswer(){
+    var answerBank= document.getElementById('answerBank');
+    var answers= document.getElementById('answers');
+    answerBank.style.display= 'block';
+    scoreboard.style.display= 'none';
+    for(var a=0;a<questionBank.length;a++)
+    {
+        var list= document.createElement('li');
+        list.innerHTML= questionBank[a].answer;
+        answers.appendChild(list);
+    }
+}
+displayQuestion();
+</script>
+</body>
+</html>
